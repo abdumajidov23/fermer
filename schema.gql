@@ -1,0 +1,118 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Admin {
+  description: String
+  email: String!
+  full_name: String!
+  hashed_password: String
+  hashed_refresh_token: String
+  id: ID!
+  is_active: Boolean
+  is_creator: Boolean
+  phone_number: String
+  tg_link: String
+}
+
+input CreateAdminDto {
+  confirm_password: String!
+  description: String
+  email: String!
+  full_name: String!
+  is_active: Boolean = true
+  is_creator: Boolean = false
+  password: String!
+  phone_number: String
+  tg_link: String
+}
+
+input CreateRoleDto {
+  description: String!
+  role_name: String!
+}
+
+input CreateWorkerDto {
+  birth_date: String!
+  description: String
+  email: String!
+  experience: Float!
+  full_name: String!
+  is_active: Boolean
+  password: String!
+  phone_number: String
+  tg_link: String
+}
+
+type Mutation {
+  createAdmin(createAdmin: CreateAdminDto!): Admin!
+  createRole(createRole: CreateRoleDto!): Role!
+  createWorker(createWorker: CreateWorkerDto!): Worker!
+  removeAdmin(id: ID!): ID!
+  removeRole(id: ID!): ID!
+  removeWorker(id: ID!): ID!
+  updateAdmin(id: ID!, updateAdmin: UpdateAdminDto!): Admin!
+  updateRole(id: ID!, updateRole: UpdateRoleDto!): Role!
+  updateWorker(id: ID!, updateWorker: UpdateWorkerDto!): Worker!
+}
+
+type Query {
+  findAllAdmin: [Admin!]!
+  findAllRole: [Role!]!
+  findAllWorker: [Worker!]!
+  findOneAdmin(id: ID!): Admin!
+  findOneRole(id: ID!): Role!
+  findOneWorker(id: ID!): Worker!
+}
+
+type Role {
+  description: String
+  id: ID!
+  role_name: String!
+  workers: [Worker!]!
+}
+
+input UpdateAdminDto {
+  confirm_password: String
+  description: String
+  email: String
+  full_name: String
+  hashed_refresh_token: String
+  is_active: Boolean
+  is_creator: Boolean
+  password: String
+  phone_number: String
+  tg_link: String
+}
+
+input UpdateRoleDto {
+  description: String
+  role_name: String
+}
+
+input UpdateWorkerDto {
+  birth_date: String
+  description: String
+  email: String
+  experience: Float
+  full_name: String
+  is_active: Boolean
+  password: String
+  phone_number: String
+  tg_link: String
+}
+
+type Worker {
+  birth_date: String!
+  description: String
+  email: String!
+  experience: Float!
+  full_name: String!
+  hashed_password: String
+  hashed_refresh_token: String
+  id: ID!
+  is_active: Boolean!
+  phone_number: String
+  roles: [Role!]!
+  tg_link: String
+}
